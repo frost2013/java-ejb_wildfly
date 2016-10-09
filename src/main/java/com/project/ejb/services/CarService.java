@@ -4,15 +4,14 @@ package com.project.ejb.services;
 import com.project.ejb.data.Car;
 import com.project.ejb.model.CarManipulate;
 import com.project.ejb.model.Finance;
-import com.project.ejb.remote.CarServiceRemote;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.ws.rs.*;
 import java.util.List;
 
-@Stateless(name="car")
-@Path("/car")
+@Path("car")
+@Consumes({ "application/json" })
+@Produces({ "application/json" })
 public class CarService {
 	@EJB
 	private CarManipulate carStorage;
@@ -27,7 +26,7 @@ public class CarService {
 	@PUT
 	public String pushCar(@QueryParam("number") String number,
 	                      @QueryParam("marka") String marka) {
-		return carStorage.addCar(number, marka);
+        return carStorage.addCar(number, marka);
 	}
 
 	@DELETE

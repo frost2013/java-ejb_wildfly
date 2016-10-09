@@ -28,6 +28,9 @@ public class CarManipulate {
 	}
 
 	public String addCar(String number, String marka){
+		if (number == null || marka == null) {
+			return "error: Parameter is null";
+		}
 		if (number.equals("") || marka.equals("")) {
 			return "error: Information about car is not full";
 		}
